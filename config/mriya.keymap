@@ -18,6 +18,22 @@
 &mt { quick_tap_ms = <200>; };
 
 / {
+    macros {
+        macro_less: macro_less {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_SHIFT>,
+                <&macro_tap>,
+                <&kp COMMA>,
+                <&macro_release>,
+                <&kp LEFT_SHIFT>;
+
+            label = "MACRO_LESS";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -44,7 +60,7 @@
         raise_layer {
             bindings = <
   &trans  &kp F1  &kp F2     &kp F3                &kp F4                 &kp F5          &kp F6         &kp F7    &kp F8    &kp F9        &kp F10  &kp DELETE
-  &trans  &trans  &kp MINUS  &kp LESS_THAN         &kp GREATER_THAN       &kp EQUAL       &kp PAGE_UP    &kp HOME  &kp UP    &kp END       &trans   &trans
+  &trans  &trans  &kp MINUS  &macro_less           &kp GREATER_THAN       &kp EQUAL       &kp PAGE_UP    &kp HOME  &kp UP    &kp END       &trans   &trans
   &trans  &trans  &trans     &kp LBKT              &kp RBKT               &kp LS(PIPE)    &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT     &trans   &trans
   &trans  &trans  &trans     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE       &trans         &trans    &trans    &trans        &trans   &trans
                   &trans     &trans                &trans                 &trans          &mo 3          &trans    &trans    &kp CAPSLOCK
